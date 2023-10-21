@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using UnityEngine.Rendering.VirtualTexturing;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f; // Adjust this to control the movement speed.
-
+    bool canmove = true;
     private Rigidbody2D rb;
 
     private void Start()
@@ -15,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (!canmove)
+            return;
         // Get input from the arrow keys or WASD keys.
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
@@ -29,7 +33,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "enemy")
         {
-            Destroy(gameObject);
+            joever.main.activeJoever();
+            canmove = false;
         }
     }
 }
