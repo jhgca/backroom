@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Apply the movement to the Rigidbody2D.
         rb.velocity = movement * moveSpeed;
+
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

@@ -16,7 +16,8 @@ public class track : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F)) 
         {
-            GameObject instance = Instantiate(arrow, transform.position, Quaternion.identity); 
+            GameObject instance = Instantiate(arrow, transform.position, Quaternion.identity);
+            Debug.Log(GameManager.main.findclosestcane(transform.position));
             instance.transform.right = GameManager.main.findclosestcane(transform.position).transform.position - transform.position;
         }
     }

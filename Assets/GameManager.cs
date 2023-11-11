@@ -5,6 +5,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject player;
     public static GameManager main;
     public int canes;
     public TextMeshProUGUI canetxt;
@@ -13,11 +14,12 @@ public class GameManager : MonoBehaviour
 
     public GameObject findclosestcane(Vector2 position)
     {
+        canearray = GameObject.FindGameObjectsWithTag("canes");
         GameObject closest = canearray[0];
 
         foreach (GameObject cane in canearray)
         {
-            if (Vector2.Distance(position, cane.transform.position) > Vector2.Distance(closest.transform.position, position))
+            if (Vector2.Distance(position, cane.transform.position) < Vector2.Distance(closest.transform.position, position))
             {
                 closest = cane;
             }
@@ -39,6 +41,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         canearray = GameObject.FindGameObjectsWithTag("canes");
     }
 
