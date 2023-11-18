@@ -4,6 +4,7 @@ using UnityEngine;
 using Pathfinding;
 using UnityEditor.Experimental.GraphView;
 using System;
+using Unity.VisualScripting;
 
 public class chase : MonoBehaviour
 {
@@ -13,13 +14,8 @@ public class chase : MonoBehaviour
     public float timetomax;
     private Seeker seeker;
     private float startTime;
-    //private Path path;
-    //public int currentwaypoint = 0;
-    //private bool reachedendofpath = false;
-    //public Vector2 direction;
-    //public Vector3 currtarget;
+    public int health;
     public IAstarAI ai;
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -37,31 +33,15 @@ public class chase : MonoBehaviour
         ai.maxSpeed = currspeed;
         Vector3 destination = target.transform.position;
         ai.destination = destination;
-        //seeker.StartPath(transform.position, destination, OnPathComplete);
-        //if (path != null ) 
-        //{
-        //    if (currentwaypoint >= path.vectorPath.Count) 
-        //    {
-        //        reachedendofpath = true;
-        //    }
-        //    else
-        //    {
-        //        reachedendofpath = false;
-        //        currtarget = path.vectorPath[currentwaypoint] - transform.position;
-        //        direction = currtarget.normalized;
-
-        //    }
-        //}
-        
-        //rb.velocity = direction * speed;
+       
     }
-    //void OnPathComplete(Path p)
-    //{
-    //    if (!p.error)
-    //    {
-    //        path = p;
-    //        currentwaypoint = 1;
-    //        reachedendofpath = false;
-    //    }
-    //}
+    public void hurt(int amount)
+    {
+        health -= amount;
+        if (health < 0)
+        {
+            Destroy(this.gameObject);
+
+        }
+    }
 }

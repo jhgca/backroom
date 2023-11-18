@@ -19,7 +19,7 @@ public class pickup : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            GameManager.main.changecanes(1);
+            GameManager.main.changecanes(10);
             Destroy(gameObject);
         }
     }
