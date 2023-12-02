@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
-using UnityEditor.Experimental.GraphView;
 using System;
 using Unity.VisualScripting;
 
@@ -40,8 +39,8 @@ public class chase : MonoBehaviour
         health -= amount;
         if (health < 0)
         {
+            GameManager.main.WinGame();
             Destroy(this.gameObject);
-
         }
     }
 }

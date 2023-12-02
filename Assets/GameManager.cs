@@ -6,6 +6,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public GameObject player;
+    public GameObject win;
     public static GameManager main;
     public int canes;
     public TextMeshProUGUI canetxt;
@@ -53,5 +54,10 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         main = this;
+    }
+    public void WinGame()
+    {
+        win.SetActive(true);
+
     }
 }
