@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class pickup : MonoBehaviour
 {
+    public bool specialsauce;
+    public GameObject caine;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +21,17 @@ public class pickup : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            GameManager.main.changecanes(10);
-            Destroy(gameObject);
+            if (!specialsauce)
+            {
+                GameManager.main.changecanes(10);
+                Destroy(gameObject);
+            }
+            else
+            {
+                Instantiate(caine, transform.position, Quaternion.identity);
+                GameManager.main.changecanes(20);
+                Destroy(gameObject);
+            }
         }
     }
 }
