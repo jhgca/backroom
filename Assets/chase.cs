@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 
 public class chase : MonoBehaviour
 {
+    public GameObject ouch;
     public GameObject target;
     private Rigidbody2D rb;
     public float minspeed, maxspeed;
@@ -37,6 +38,7 @@ public class chase : MonoBehaviour
     public void hurt(int amount)
     {
         health -= amount;
+        Instantiate(ouch, transform.position, Quaternion.identity);
         if (health < 0)
         {
             GameManager.main.WinGame();

@@ -25,13 +25,14 @@ public class pickup : MonoBehaviour
             {
                 GameManager.main.changecanes(10);
                 Destroy(gameObject);
+
             }
             else
             {
-                Instantiate(caine, transform.position, Quaternion.identity);
                 GameManager.main.changecanes(20);
                 Destroy(gameObject);
             }
+            Instantiate(caine, transform.position, Quaternion.identity);
         }
     }
 }

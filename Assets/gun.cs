@@ -5,6 +5,7 @@ using UnityEngine;
 public class gun : MonoBehaviour
 {
     public Transform firespot;
+    public GameObject muzzleflash;
     public GameObject boulet;
     public float velocity;
     // Start is called before the first frame update
@@ -27,6 +28,7 @@ public class gun : MonoBehaviour
                 return;
             }
             GameObject instance = Instantiate(boulet, firespot.position, firespot.rotation);
+            Instantiate(muzzleflash, firespot.position, firespot.rotation);
             instance.GetComponent<Rigidbody2D>().AddForce (firespot.right * velocity, ForceMode2D.Impulse);
             GameManager.main.changecanes(-1);
 

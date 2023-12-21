@@ -1,11 +1,13 @@
-    using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
 public class joever : MonoBehaviour
 
 {
+    public GameObject lose;
     public GameObject die;
     public static joever main;
     private void Awake()
@@ -26,5 +28,6 @@ public class joever : MonoBehaviour
     public void activeJoever()
     {
         die.SetActive(true);
+        Instantiate(lose, transform.position, Quaternion.identity);
     }
 }

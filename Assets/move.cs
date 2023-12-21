@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public AudioSource sound;
+    public bool ismoving;
     public float moveSpeed = 5f; // Adjust this to control the movement speed.
     bool canmove = true;
     private Rigidbody2D rb;
@@ -12,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sound = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -27,7 +30,22 @@ public class PlayerMovement : MonoBehaviour
 
         // Apply the movement to the Rigidbody2D.
         rb.velocity = movement * moveSpeed;
-
+        if (movement != Vector2.zero)
+        {
+            if (ismoving == false)
+            {
+                ismoving = true;
+                sound.Play();
+            }
+        }
+        else
+        {
+            if (ismoving == true)
+            {
+                ismoving = false;
+                sound.Stop();
+            }
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
