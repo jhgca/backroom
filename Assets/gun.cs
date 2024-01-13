@@ -8,10 +8,11 @@ public class gun : MonoBehaviour
     public GameObject muzzleflash;
     public GameObject boulet;
     public float velocity;
+    private Animator anim;
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -27,6 +28,7 @@ public class gun : MonoBehaviour
             {
                 return;
             }
+            anim.SetTrigger("shoot");
             GameObject instance = Instantiate(boulet, firespot.position, firespot.rotation);
             Instantiate(muzzleflash, firespot.position, firespot.rotation);
             instance.GetComponent<Rigidbody2D>().AddForce (firespot.right * velocity, ForceMode2D.Impulse);
