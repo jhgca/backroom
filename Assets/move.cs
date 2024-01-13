@@ -10,11 +10,13 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f; // Adjust this to control the movement speed.
     bool canmove = true;
     private Rigidbody2D rb;
+    private Animator anim;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sound = GetComponent<AudioSource>();
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -46,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
                 sound.Stop();
             }
         }
+        anim.SetBool("iswalking" , ismoving);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
